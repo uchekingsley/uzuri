@@ -1,16 +1,19 @@
-import {
-  View,
-  Text,
-  ImageBackground,
-  ScrollView,
-  Pressable,
-  TouchableOpacity,
-  Dimensions,
-  NativeSyntheticEvent,
-  NativeScrollEvent,
-} from "react-native";
 import Feather from "@expo/vector-icons/Feather";
+import { router } from "expo-router";
 import React, { useRef, useState } from "react";
+import {
+  Dimensions,
+  Image,
+  ImageBackground,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  Pressable,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const { width: deviceWidth } = Dimensions.get("window");
 
@@ -33,6 +36,7 @@ const onboardingData = [
 ];
 
 const Onboarding = () => {
+  const insets = useSafeAreaInsets();
   const [currentIndex, setcurrentIndex] = useState(0);
   const scrollViewRef = useRef<ScrollView>(null);
 
@@ -42,6 +46,8 @@ const Onboarding = () => {
         x: deviceWidth * (currentIndex + 1),
         animated: true,
       });
+    } else {
+      router.push("/(auth)/gender");
     }
   };
 
@@ -50,6 +56,10 @@ const Onboarding = () => {
       x: deviceWidth * (onboardingData.length - 1),
       animated: true,
     });
+    // Directly skips to the next screen if already at last page
+    if (currentIndex === onboardingData.length - 1) {
+      router.push("/(auth)/gender");
+    }
   };
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -65,10 +75,9 @@ const Onboarding = () => {
       style={{
         flex: 1,
         paddingBottom: 88,
-        paddingTop: 38,
+        paddingTop: insets.top + 10,
       }}
     >
-      {/* pagination-indicator */}
 
       <View
         style={{
@@ -78,15 +87,22 @@ const Onboarding = () => {
           paddingHorizontal: 34,
         }}
       >
-        <Text
-          style={{
-            fontSize: 32,
-            fontFamily: "Grotley",
-            color: "#fff",
-          }}
-        >
-          Uzuri
-        </Text>
+        <View style={{ flexDirection: "row", alignItems: "center", gap: 12 }}>
+          <Image
+            source={require("@/assets/images/uzuri-logo.png")}
+            style={{ width: 24, height: 24 }}
+            resizeMode="contain"
+          />
+          <Text
+            style={{
+              fontSize: 24,
+              fontFamily: "Grotley",
+              color: "#fff",
+            }}
+          >
+            Uzuri
+          </Text>
+        </View>
 
         <View
           style={{
@@ -117,7 +133,6 @@ const Onboarding = () => {
         </View>
       </View>
 
-      {/* scrollview */}
 
       <View style={{ flex: 1, paddingBottom: 80 }}>
         <ScrollView
@@ -128,7 +143,7 @@ const Onboarding = () => {
           scrollEventThrottle={16}
           ref={scrollViewRef}
           onMomentumScrollEnd={handleScroll}
-          
+
         >
           {onboardingData.map((item) => (
             <View
@@ -153,7 +168,6 @@ const Onboarding = () => {
         </ScrollView>
       </View>
 
-      {/* buttons */}
 
       <View
         style={{

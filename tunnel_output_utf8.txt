@@ -1,0 +1,26 @@
+﻿Starting project at C:\Users\user\Documents\Collaborations\Uzuri Healthcare\uzuri
+ΓÇ║ Port 8081 is being used by another process
+node.exe : Input is 
+required, but 'npx expo' 
+is in non-interactive 
+mode.
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (I  
+  nput is requir...tera   
+ ctive mode.:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+Required input:
+> Use port 8082 instead?
+ΓÇ║ Skipping dev server
