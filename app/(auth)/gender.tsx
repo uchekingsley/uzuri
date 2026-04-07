@@ -46,9 +46,11 @@ const GenderSelection = () => {
           <Feather name="chevron-left" size={28} color="#263238" />
         </TouchableOpacity>
 
+        {/* Step indicator (1 of 7) */}
         <ProgressBar step={1} total={7} />
       </View>
 
+      {/* Core question and hormonal context for skin assessment */}
       <View style={{ paddingHorizontal: 24, marginTop: 40 }}>
         <Text
           style={{
@@ -73,6 +75,7 @@ const GenderSelection = () => {
         </Text>
       </View>
 
+      {/* Selection container for gender identification */}
       <View
         style={{
           flexDirection: "row",

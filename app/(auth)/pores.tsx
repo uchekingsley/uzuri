@@ -104,6 +104,7 @@ const PoresSelection = () => {
   const handleSelect = (slideKey: string, optionId: string) => {
     setAnswers(prev => ({ ...prev, [slideKey]: optionId }));
 
+    // Auto-advance to the next slide or transition to the next assessment step
     setTimeout(() => {
       if (currentIndex < slides.length - 1) {
         scrollViewRef.current?.scrollTo({ x: deviceWidth * (currentIndex + 1), animated: true });
@@ -131,6 +132,7 @@ const PoresSelection = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      {/* Navigation header with back button and progress tracking */}
       <View
         style={{
           flexDirection: "row",
@@ -144,6 +146,7 @@ const PoresSelection = () => {
           <Feather name="chevron-left" size={28} color="#263238" />
         </TouchableOpacity>
 
+        {/* Dynamic progress bar reflecting the current diagnostic step */}
         <ProgressBar step={3 + currentIndex} total={7} />
       </View>
 
@@ -159,6 +162,7 @@ const PoresSelection = () => {
         {slides.map((slide) => (
           <View key={slide.key} style={{ width: deviceWidth }}>
             <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+              {/* Main question and descriptive subtitle for context */}
               <View style={{ paddingHorizontal: 24, marginTop: 40 }}>
                 <Text
                   style={{
@@ -183,6 +187,7 @@ const PoresSelection = () => {
                 </Text>
               </View>
 
+              {/* List of selectable assessment options */}
               <View style={styles.optionsContainer}>
                 {slide.options.map((option) => {
                   const isSelected = answers[slide.key] === option.id;

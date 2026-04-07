@@ -102,6 +102,7 @@ const ConcernsScreen = () => {
 
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
+      {/* Header with back button and progress indicator */}
       <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
         <TouchableOpacity onPress={() => router.back()}>
           <Feather name="chevron-left" size={28} color="#263238" />
@@ -110,6 +111,7 @@ const ConcernsScreen = () => {
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Main query regarding skin concerns */}
         <View style={styles.titleSection}>
           <Text style={styles.title}>What is your major skin concerns?</Text>
           <Text style={styles.subtitle}>
@@ -117,6 +119,7 @@ const ConcernsScreen = () => {
           </Text>
         </View>
 
+        {/* Interactive grid for selecting multiple concerns */}
         <View style={styles.grid}>
           {concerns.map((item) => (
             <ConcernCard
@@ -131,6 +134,7 @@ const ConcernsScreen = () => {
         </View>
       </ScrollView>
 
+      {/* Navigation action footer */}
       <View style={[styles.footer, { paddingBottom: insets.bottom + 16 }]}>
         <TouchableOpacity 
           style={[

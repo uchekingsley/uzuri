@@ -1,18 +1,18 @@
+import ProgressBar from "@/components/ProgressBar";
+import Feather from "@expo/vector-icons/Feather";
+import { router } from "expo-router";
 import React, { useState } from "react";
 import {
+  KeyboardAvoidingView,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-  KeyboardAvoidingView,
-  Platform,
 } from "react-native";
-import { router } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import Feather from "@expo/vector-icons/Feather";
-import ProgressBar from "@/components/ProgressBar";
 
 const RoutineScreen = () => {
   const insets = useSafeAreaInsets();
@@ -31,14 +31,15 @@ const RoutineScreen = () => {
   };
 
   const handleFinish = () => {
-    router.replace("/(auth)/onboarding"); 
+    router.replace("/(auth)/onboarding");
   };
 
   return (
-    <KeyboardAvoidingView 
+    <KeyboardAvoidingView
       style={{ flex: 1, backgroundColor: "#fff" }}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
+      {/* Header with back navigation and progress tracking */}
       <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
         <TouchableOpacity onPress={() => router.back()}>
           <Feather name="chevron-left" size={28} color="#263238" />
@@ -47,6 +48,7 @@ const RoutineScreen = () => {
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Section title and context about current product usage */}
         <View style={styles.titleSection}>
           <Text style={styles.title}>What products are you currently using?</Text>
           <Text style={styles.subtitle}>
@@ -54,6 +56,7 @@ const RoutineScreen = () => {
           </Text>
         </View>
 
+        {/* List of active product ingredients or concerns as tags */}
         <View style={styles.tagsContainer}>
           {tags.map((tag, index) => (
             <View key={index} style={styles.tag}>
@@ -65,6 +68,7 @@ const RoutineScreen = () => {
           ))}
         </View>
 
+        {/* Input field for adding new products or ingredients */}
         <View style={styles.inputSection}>
           <TextInput
             style={styles.input}
@@ -78,8 +82,9 @@ const RoutineScreen = () => {
         </View>
       </ScrollView>
 
+      {/* Action footer for finishing the setup */}
       <View style={[styles.footer, { paddingBottom: insets.bottom + 16 }]}>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.finishButton}
           onPress={handleFinish}
         >
@@ -127,7 +132,7 @@ const styles = StyleSheet.create({
   tag: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#E0F2FE", // Soft blue highlight
+    backgroundColor: "#E0F2FE",
     paddingHorizontal: 16,
     paddingVertical: 10,
     borderRadius: 100,

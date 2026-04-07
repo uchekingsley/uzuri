@@ -46,10 +46,12 @@ const TextureSelection = () => {
           <Feather name="chevron-left" size={28} color="#263238" />
         </TouchableOpacity>
 
+        {/* Assessment progress (Step 2 of 7) */}
         <ProgressBar step={2} total={7} />
       </View>
 
       <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+        {/* Question regarding skin texture and feelings at noon */}
         <View style={{ paddingHorizontal: 24, marginTop: 40 }}>
           <Text
             style={{
@@ -74,6 +76,7 @@ const TextureSelection = () => {
           </Text>
         </View>
 
+        {/* Diagonal, staggered grid of selectable texture types */}
         <View style={styles.grid}>
           {textureRows.map((row, rowIndex) => (
             <View
@@ -119,6 +122,7 @@ const TextureSelection = () => {
         </View>
       </ScrollView>
 
+      {/* Navigation action footer to progress forward */}
       <View style={{ paddingHorizontal: 24, paddingBottom: insets.bottom + 20 }}>
         <TouchableOpacity
           activeOpacity={0.8}

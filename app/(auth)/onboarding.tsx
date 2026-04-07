@@ -57,6 +57,7 @@ const Onboarding = () => {
       animated: true,
     });
     // Directly skips to the next screen if already at last page
+    // Navigate directly if we're on the last onboarding page
     if (currentIndex === onboardingData.length - 1) {
       router.push("/(auth)/gender");
     }
@@ -134,6 +135,7 @@ const Onboarding = () => {
       </View>
 
 
+      {/* Swipeable content area for onboarding messages */}
       <View style={{ flex: 1, paddingBottom: 80 }}>
         <ScrollView
           horizontal
